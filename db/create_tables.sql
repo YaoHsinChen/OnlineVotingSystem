@@ -1,0 +1,16 @@
+CREATE DATABASE IF NOT EXISTS vote_db;
+
+USE vote_db;
+
+CREATE TABLE IF NOT EXISTS voting_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    deleted BOOLEAN DEFAULT FALSE
+);
+
+CREATE TABLE IF NOT EXISTS voting_records (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    voter VARCHAR(255) NOT NULL,
+    item_id INT,
+    FOREIGN KEY (item_id) REFERENCES voting_items(id)
+);
